@@ -151,7 +151,12 @@ vim.opt.scrolloff = 10
 
 -- setting tabstop
 vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.tabstop = 4
+-- vim.opt.softtabstop = -1
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -668,20 +673,30 @@ require("lazy").setup({
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
 				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = {}
 				return {
 					timeout_ms = 500,
-					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+					lsp_fallback = "fallback",
 				}
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
-				python = { "isort", "black" },
+				python = { "black", "isort" },
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
 				javascript = { { "prettierd", "prettier" } },
+				typescript = { { "prettierd", "prettier" } },
+				javascriptreact = { { "prettierd", "prettier" } },
+				typescriptreact = { { "prettierd", "prettier" } },
+				html = { { "prettierd", "prettier" } },
+				css = { { "prettierd", "prettier" } },
+
+				["*"] = { "codespell" },
+				["_"] = { "trim_whitespace" },
+			},
+			format_after_save = {
+				lsp_format = "fallback",
 			},
 		},
 	},
@@ -961,7 +976,7 @@ require("lazy").setup({
 			"html",
 		},
 		config = function()
-			require("nvim-ts-autotag").setup({})
+			require("nvim-ts-autotag").setup()
 		end,
 	},
 	{
