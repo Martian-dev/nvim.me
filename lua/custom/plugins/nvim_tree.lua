@@ -10,6 +10,9 @@ return {
 			view = {
 				side = "right",
 			},
+			git = {
+				timeout = 1000,
+			},
 		})
 	end,
 }
