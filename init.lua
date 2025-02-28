@@ -640,7 +640,6 @@ require("lazy").setup({
 					"emmet_language_server",
 					"eslint",
 					"html",
-					"jedi_language_server",
 					"lua_ls",
 					"tailwindcss",
 					"tsserver",
