@@ -157,11 +157,10 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- setting tabstop
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
 vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.smarttab = true
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 4
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -778,7 +777,7 @@ require("lazy").setup({
 				python = { "isort", "black" },
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
-				javascript = { "prettierd", "prettier", stop_after_first = true },
+				javascript = { "prettier", "prettierd", stop_after_first = true },
 			},
 		},
 	},
